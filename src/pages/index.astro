@@ -1,8 +1,21 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionLabel from "@/components/SectionLabel.astro";
 import { services, testimonials, trustSignals } from "@/mocks/home";
 import { localBusinessSchema, SITE } from "@/lib/seo";
+import heroBg from "@/assets/home/mg-hero-bg-001.webp";
+import aboutImg from "@/assets/home/mg-about-001.webp";
+import test001 from "@/assets/home/mg-test-001.webp";
+import test002 from "@/assets/home/mg-test-002.webp";
+import test003 from "@/assets/home/mg-test-003.webp";
+
+// Map the mock's public paths to the optimizable imported assets.
+const testImages: Record<string, ImageMetadata> = {
+  "/images/mg-test-001.webp": test001,
+  "/images/mg-test-002.webp": test002,
+  "/images/mg-test-003.webp": test003,
+};
 
 const heroStats = [
   { value: "24/7", label: "Always on call" },
@@ -17,11 +30,12 @@ const title = "M&G Security — Professional Security Services Berks County, PA"
     {/* Hero */}
     <section id="top" class="relative min-h-[80vh] w-full overflow-hidden bg-secondary-500">
       <div class="absolute inset-0">
-        <img
-          src="/images/mg-hero-bg-001.webp"
+        <Image
+          src={heroBg}
           alt="Professional security operations background"
-          width={1920}
-          height={1072}
+          widths={[768, 1280, 1920]}
+          sizes="100vw"
+          loading="eager"
           fetchpriority="high"
           class="w-full h-full object-cover object-top"
         />
@@ -127,7 +141,7 @@ const title = "M&G Security — Professional Security Services Berks County, PA"
         <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
           <div class="w-full lg:w-1/2">
             <div class="relative overflow-hidden aspect-[4/3]">
-              <img src="/images/mg-about-001.webp" alt="M&G Security professional guard" class="w-full h-full object-cover" />
+              <Image src={aboutImg} alt="M&G Security professional guard" widths={[480, 768]} sizes="(min-width: 1024px) 50vw, 100vw" loading="lazy" class="w-full h-full object-cover" />
               <div class="absolute inset-0 bg-gradient-to-t from-secondary-500/60 to-transparent"></div>
             </div>
           </div>
@@ -183,7 +197,7 @@ const title = "M&G Security — Professional Security Services Berks County, PA"
           {testimonials.map((t) => (
             <div class="bg-background-50 border border-background-200 p-7 flex flex-col">
               <div class="flex items-center gap-4">
-                <img src={t.img} alt={t.name} class="w-12 h-12 object-cover" />
+                <Image src={testImages[t.img]} alt={t.name} width={48} height={48} loading="lazy" class="w-12 h-12 object-cover" />
                 <div>
                   <p class="font-heading text-sm text-foreground-950">{t.name}</p>
                   <p class="text-xs text-foreground-500">{t.role}</p>

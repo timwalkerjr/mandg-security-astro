@@ -8,11 +8,11 @@ const description =
 
 const perfStats = [
   { v: "A", l: "GTmetrix Grade" },
-  { v: "100%", l: "Performance" },
+  { v: "99%", l: "Performance" },
   { v: "100%", l: "Structure" },
-  { v: "560ms", l: "Largest Paint" },
-  { v: "0ms", l: "Blocking Time" },
-  { v: "333KB", l: "Page Weight" },
+  { v: "703ms", l: "Largest Paint" },
+  { v: "21ms", l: "Blocking Time" },
+  { v: "283KB", l: "Page Weight" },
 ];
 
 const reconstructionNotes = [
@@ -94,11 +94,14 @@ const preservedFacts = [
           Smoking <span class="text-primary-500">Fast</span>
         </h2>
         <p class="mt-4 max-w-2xl text-foreground-600 text-sm md:text-base leading-relaxed">
-          After the mockup stage this build was tuned for speed. On GTmetrix it scores a
-          perfect <span class="text-foreground-950 font-medium">100 / 100</span> for
-          Performance and Structure, paints its largest content in about half a second, and
-          ships at roughly a third of a megabyte — fully self-hosted, image-optimized, and free
-          of third-party dependencies. In plain terms: it loads almost instantly.
+          After the mockup stage this build was rebuilt as a static Astro site and tuned for
+          speed. On GTmetrix it earns an overall grade of <span class="text-foreground-950 font-medium">A</span>
+          — <span class="text-foreground-950 font-medium">100 / 100</span> Structure and
+          <span class="text-foreground-950 font-medium">99 / 100</span> Performance — paints its
+          largest content in about seven-tenths of a second, holds a perfect zero Cumulative
+          Layout Shift, and ships at roughly <span class="text-foreground-950 font-medium">283&nbsp;KB</span>
+          — fully self-hosted, image-optimized, and free of third-party dependencies. In plain
+          terms: it loads almost instantly.
         </p>
 
         <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -120,7 +123,7 @@ const preservedFacts = [
             class="w-full h-auto rounded-lg border border-background-200 shadow-sm"
           />
           <figcaption class="mt-3 text-center text-xs text-foreground-500">
-            Before / after: total page weight cut from 1.51&nbsp;MB to 333&nbsp;KB (−78%), Structure score 94&nbsp;→&nbsp;100.
+            Early before / after: page weight cut from 1.51&nbsp;MB to 333&nbsp;KB, Structure 94&nbsp;→&nbsp;100. The current static Astro build is lighter still at ~283&nbsp;KB.
           </figcaption>
         </figure>
       </div>
