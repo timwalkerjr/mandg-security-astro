@@ -4,7 +4,7 @@
 
 export const SITE = {
   name: "M&G Security",
-  url: "https://mandgsecurity.netlify.app",
+  url: "https://astro-mandgsecurity.netlify.app",
   legalName: "M&G Security",
   description:
     "M&G Security provides professional security services for events, construction sites, corporate properties and more across Berks County, PA. Founded in 1997 by former law enforcement officers.",
@@ -20,7 +20,7 @@ export const SITE = {
     country: "US",
   },
   sameAs: ["https://www.facebook.com/profile.php?id=100063783338150"],
-  logo: "https://mandgsecurity.netlify.app/images/mg-icon_gold-512.webp",
+  logo: "https://astro-mandgsecurity.netlify.app/images/mg-icon_gold-512.webp",
 } as const;
 
 // Absolute URL for a route path (leading-slash path in, absolute URL out).

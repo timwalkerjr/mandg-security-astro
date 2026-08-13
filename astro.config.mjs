@@ -6,7 +6,7 @@ import tailwind from '@astrojs/tailwind';
 // output: 'static' — every route is pre-rendered to real HTML at build time.
 // Governing rule: content in the served HTML, per-route meta + JSON-LD.
 export default defineConfig({
-  site: 'https://mandgsecurity.netlify.app',
+  site: 'https://astro-mandgsecurity.netlify.app',
   output: 'static',
   integrations: [
     react(),

@@ -9,4 +9,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://mandgsecurity.netlify.app/sitemap-index.xml
+Sitemap: https://astro-mandgsecurity.netlify.app/sitemap-index.xml
