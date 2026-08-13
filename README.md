@@ -53,8 +53,24 @@ npm run preview  # serve dist/
 Netlify from this repo — `netlify.toml` sets `command = "npm run build"` and
 `publish = "dist"` (Astro default), with **no** SPA catch-all redirect.
 
-## Before publish
+## Status
 
-- Replace the `info@theiroldurl.com` placeholder email (footer + contact page).
-- Point `site` in `astro.config.mjs` + the canonical/OG base in `src/lib/seo.ts`
-  at the final production domain.
+Live and deployed on Netlify at **https://astro-mandgsecurity.netlify.app**
+(auto-deploys from `main`). All 21 routes render real pre-rendered HTML with
+per-route SEO + JSON-LD. GTmetrix (Aug 2026): grade **A**, Performance 99,
+Structure 100, LCP ~0.7s, CLS 0, ~283&nbsp;KB.
+
+Done:
+- Static Astro port, 1:1 with the source SPA; islands-only client JS.
+- Canonical / `site` / OG / sitemap set to `astro-mandgsecurity.netlify.app`
+  (the prior `mandgsecurity.netlify.app` SPA is being retired after review —
+  do **not** canonical back to it).
+- Article template matches the service-detail layout; articles collection
+  wired for twc-publish.
+- Home images optimized via `astro:assets` (responsive hero `srcset`,
+  lazy-loaded below-the-fold); Navbar hydrates `client:idle`.
+
+### Outstanding before launch
+
+- [ ] Replace the `info@theiroldurl.com` placeholder email (footer +
+      `src/pages/contact-us.astro`) with the client's real address.
