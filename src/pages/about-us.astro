@@ -1,0 +1,99 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+import CtaBand from "@/components/CtaBand.astro";
+import { localBusinessSchema } from "@/lib/seo";
+
+const title = "About Us | M&G Security — Founded by Law Enforcement, 1997";
+const description =
+  "M&G Security was founded in 1997 by former Reading Police Sergeant Mark N. Pellicciotti and retired PA State Trooper Anthony DiGuglielmo. Over 27 years protecting Berks County, PA.";
+---
+<BaseLayout title={title} description={description} canonical="/about-us" jsonLd={localBusinessSchema()}>
+  <main>
+    {/* Hero */}
+    <section class="relative bg-secondary-500 pt-[140px] pb-20 px-6 md:px-10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(var(--primary-500)/0.08),_transparent_50%)]"></div>
+      <div class="relative z-10 max-w-4xl">
+        <SectionLabel tone="dark">About Us</SectionLabel>
+        <h1 class="mt-5 font-heading text-4xl md:text-5xl lg:text-6xl text-foreground-50">
+          Built on Law Enforcement
+          <br />
+          <span class="text-primary-500">Experience &amp; Trust</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-foreground-400 text-base leading-relaxed">
+          Founded in 1997 by former Reading Police Sergeant Mark N. Pellicciotti and retired Pennsylvania State Trooper Anthony DiGuglielmo, M&amp;G Security has been protecting Berks County for over 27 years.
+        </p>
+      </div>
+    </section>
+
+    {/* Story */}
+    <section class="py-24 md:py-32 px-6 md:px-10">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <img src="/images/mg-about-002.webp" alt="M&G Security team" class="w-full object-cover aspect-[4/3]" />
+        </div>
+        <div>
+          <h2 class="font-heading text-3xl md:text-4xl text-foreground-950">
+            Founded by Police, Trusted by the Community
+          </h2>
+          <p class="mt-5 text-foreground-600 text-sm md:text-base leading-relaxed">
+            M&amp;G Security was founded in <strong class="text-foreground-950">1997</strong> by former <strong class="text-foreground-950">Reading Police Sergeant Mark N. Pellicciotti</strong> and retired <strong class="text-foreground-950">Pennsylvania State Trooper Anthony DiGuglielmo</strong>.
+          </p>
+          <p class="mt-4 text-foreground-600 text-sm md:text-base leading-relaxed">
+            Our staff consists of active and retired law enforcement personnel with over <span class="text-primary-500 font-semibold">60 years of combined law enforcement experience</span>. We bring the discipline, training, and professionalism of police work to every security assignment.
+          </p>
+          <p class="mt-4 text-foreground-600 text-sm md:text-base leading-relaxed">
+            From the Santander Arena to local construction sites, high school proms to corporate offices, we have protected the people and properties of Berks County with integrity and professionalism for over 27 years.
+          </p>
+
+          <div class="mt-8 grid grid-cols-3 gap-6">
+            <div>
+              <div class="font-heading text-2xl md:text-3xl text-primary-500">1997</div>
+              <div class="mt-1 font-label text-xs uppercase tracking-[0.2em] text-foreground-500">Year Founded</div>
+            </div>
+            <div>
+              <div class="font-heading text-2xl md:text-3xl text-primary-500">60+</div>
+              <div class="mt-1 font-label text-xs uppercase tracking-[0.2em] text-foreground-500">Years LEO Exp.</div>
+            </div>
+            <div>
+              <div class="font-heading text-2xl md:text-3xl text-primary-500">27+</div>
+              <div class="mt-1 font-label text-xs uppercase tracking-[0.2em] text-foreground-500">Years in Berks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Service Area */}
+    <section class="bg-background-100 py-24 md:py-32 px-6 md:px-10">
+      <div class="w-full text-center">
+        <SectionLabel>Service Area</SectionLabel>
+        <h2 class="mt-5 font-heading text-3xl md:text-4xl text-foreground-950">
+          Proudly Serving Berks County &amp; Surrounding Areas
+        </h2>
+        <p class="mt-4 max-w-2xl mx-auto text-foreground-600 text-sm md:text-base leading-relaxed">
+          We provide security services throughout Berks County, Pennsylvania and surrounding areas. Whether you need event security in Reading, construction site protection in Wyomissing, or corporate security anywhere in the county, M&amp;G Security is ready to serve.
+        </p>
+      </div>
+    </section>
+
+    <CtaBand
+      heading="Ready to Work With Us?"
+      text="Contact M&G Security today to discuss your security needs and receive a customized quote."
+    >
+      <a
+        href="tel:+14848248631"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-500 text-foreground-950 font-label text-xs uppercase tracking-[0.1em] hover:bg-primary-600 transition-colors whitespace-nowrap cursor-pointer"
+      >
+        <i class="ri-phone-line"></i>
+        Call (484) 824-8631
+      </a>
+      <a
+        href="/contact-us"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-foreground-50/30 text-foreground-50 font-label text-xs uppercase tracking-[0.1em] hover:bg-foreground-50/10 transition-colors whitespace-nowrap cursor-pointer"
+      >
+        Request a Quote
+      </a>
+    </CtaBand>
+  </main>
+</BaseLayout>

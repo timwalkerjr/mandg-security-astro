@@ -1,0 +1,191 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+
+const title = "About This Site | M&G Security";
+const description =
+  "How the M&G Security website was reconstructed — preserved facts, sources, and a transparency record for ongoing accuracy.";
+
+const perfStats = [
+  { v: "A", l: "GTmetrix Grade" },
+  { v: "100%", l: "Performance" },
+  { v: "100%", l: "Structure" },
+  { v: "560ms", l: "Largest Paint" },
+  { v: "0ms", l: "Blocking Time" },
+  { v: "333KB", l: "Page Weight" },
+];
+
+const reconstructionNotes = [
+  { title: "Source Material", body: "The original M&G Security website was no longer live at the time of this rebuild. Content, service descriptions, and factual information were reconstructed from publicly available web archive snapshots, the company's active Facebook presence, and direct brand assets provided by the client." },
+  { title: "Content Gaps", body: "Where original text was fragmented or unavailable, descriptions were carefully composed to align with the company's known service offerings, verified location, and established brand voice. No fictional claims were introduced — all service descriptions reflect the actual security work M&G Security performs in Berks County." },
+  { title: "Visual Assets", body: "The original logo was of low resolution, so all lockup and icon variants were recreated from scratch in both vector and raster formats. Gallery photography was generated to represent the types of events and sites M&G Security protects, since original photo archives were not recoverable. All generated imagery depicts realistic security scenarios consistent with the company's work." },
+  { title: "Verification", body: "Every phone number, address, and service category shown on this site was cross-referenced against archived pages and public records. We recommend the client review all content for accuracy before final publication, and we welcome corrections or additions at any time." },
+];
+
+const preservedFacts = [
+  { category: "Company Identity", items: [
+    "Founded in 1997 by former Reading Police Sergeant Mark N. Pellicciotti and retired Pennsylvania State Trooper Anthony DiGuglielmo",
+    "Staff consists of active and retired law enforcement officers with over 60 years of combined experience",
+    "Headquartered in Wyomissing, PA (Berks County)",
+    "P.O. Box 6255, Wyomissing, PA 19610",
+    "Phone: (484) 824-8631",
+  ]},
+  { category: "Services Offered", items: [
+    "Sporting Events — security for conventions, tournaments, and amateur/professional venues",
+    "High School Events — proms, graduations, and school functions",
+    "Construction Sites — tool, equipment, and material protection during and after hours",
+    "Festivals & Major Events — crowd management for public gatherings",
+    "Concert Security — venue security and crowd control for indoor and outdoor concerts",
+    "Private Investigation — professional investigative services",
+    "Apartment Complex Security — 24/7 or scheduled guard shifts for residential communities",
+    "Public Auctions — crowd control, traffic flow, and asset protection",
+    "Restaurant Maintenance — venue security and maintenance oversight",
+  ]},
+  { category: "Service Area", items: [
+    "Primary coverage: Berks County, Pennsylvania",
+    "Surrounding areas served on request",
+    "Notable venues: Santander Arena, local schools, construction sites, and corporate properties throughout Reading and Wyomissing",
+  ]},
+  { category: "Digital Presence", items: [
+    "Facebook profile active at facebook.com/profile.php?id=100063783338150",
+    "Original domain information preserved via web archive snapshots",
+    "Logo and brand mark recreated from original reference due to low resolution; all lockup and icon variants rebuilt in vector and raster formats",
+  ]},
+];
+---
+<BaseLayout title={title} description={description} canonical="/about-this-site" noindex={true}>
+  <main>
+    {/* Hero */}
+    <section class="relative bg-secondary-500 pt-[140px] pb-20 px-6 md:px-10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(var(--primary-500)/0.08),_transparent_50%)]"></div>
+      <div class="relative z-10 max-w-4xl">
+        <SectionLabel tone="dark">Project Notes</SectionLabel>
+        <h1 class="mt-5 font-heading text-4xl md:text-5xl lg:text-6xl text-foreground-50">
+          About This <span class="text-primary-500">Website</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-foreground-400 text-base leading-relaxed">
+          This page documents how the M&amp;G Security website was reconstructed, what factual information was preserved, and what sources informed the rebuild. It exists as a transparent record for the client and a review surface for ongoing accuracy.
+        </p>
+      </div>
+    </section>
+
+    {/* Mockup Notice */}
+    <section class="pt-10 md:pt-14 px-6 md:px-10">
+      <div class="w-full max-w-5xl mx-auto">
+        <div class="bg-red-50 border border-red-200 rounded-lg px-6 py-5 flex flex-col sm:flex-row items-start gap-4">
+          <div class="w-10 h-10 flex items-center justify-center bg-red-100 text-red-700 shrink-0 rounded-full">
+            <i class="ri-information-line text-xl"></i>
+          </div>
+          <div>
+            <p class="font-label text-xs uppercase tracking-[0.12em] text-red-800">Mockup Notice</p>
+            <p class="mt-1.5 text-sm text-red-700 leading-relaxed">
+              This website is a mockup created for demonstration purposes. Placeholder contact details, generated imagery, and reconstructed content may not reflect the current live M&amp;G Security business. Please verify all information before use.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Performance Metrics */}
+    <section class="pt-14 md:pt-16 px-6 md:px-10">
+      <div class="w-full max-w-5xl mx-auto">
+        <SectionLabel>Performance Metrics</SectionLabel>
+        <h2 class="mt-5 font-heading text-3xl md:text-4xl text-foreground-950">
+          Smoking <span class="text-primary-500">Fast</span>
+        </h2>
+        <p class="mt-4 max-w-2xl text-foreground-600 text-sm md:text-base leading-relaxed">
+          After the mockup stage this build was tuned for speed. On GTmetrix it scores a
+          perfect <span class="text-foreground-950 font-medium">100 / 100</span> for
+          Performance and Structure, paints its largest content in about half a second, and
+          ships at roughly a third of a megabyte — fully self-hosted, image-optimized, and free
+          of third-party dependencies. In plain terms: it loads almost instantly.
+        </p>
+
+        <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {perfStats.map((s) => (
+            <div class="bg-background-100 border border-background-200 p-5 text-center">
+              <div class="font-heading text-2xl md:text-3xl text-primary-500">{s.v}</div>
+              <div class="mt-1.5 font-label text-[10px] uppercase tracking-[0.1em] text-foreground-500">{s.l}</div>
+            </div>
+          ))}
+        </div>
+
+        <figure class="mt-10 max-w-xl mx-auto">
+          <img
+            src="/images/perf-report.png"
+            alt="Before and after performance report — page weight dropped from 1.51 MB to 333 KB, structure score 94 to 100"
+            width={1200}
+            height={1560}
+            loading="lazy"
+            class="w-full h-auto rounded-lg border border-background-200 shadow-sm"
+          />
+          <figcaption class="mt-3 text-center text-xs text-foreground-500">
+            Before / after: total page weight cut from 1.51&nbsp;MB to 333&nbsp;KB (−78%), Structure score 94&nbsp;→&nbsp;100.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    {/* Reconstruction Process */}
+    <section class="pt-14 md:pt-16 pb-24 md:pb-32 px-6 md:px-10">
+      <div class="w-full max-w-5xl mx-auto">
+        <SectionLabel>Reconstruction</SectionLabel>
+        <h2 class="mt-5 font-heading text-3xl md:text-4xl text-foreground-950">How the Site Was Rebuilt</h2>
+        <p class="mt-4 max-w-2xl text-foreground-600 text-sm md:text-base leading-relaxed">
+          When the original site was no longer accessible, we worked from every available source to reconstruct an accurate, modern representation of M&amp;G Security's online presence.
+        </p>
+
+        <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {reconstructionNotes.map((n) => (
+            <div class="bg-background-50 border border-background-200 p-8">
+              <h3 class="font-heading text-lg text-foreground-950">{n.title}</h3>
+              <p class="mt-3 text-sm text-foreground-600 leading-relaxed">{n.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Preserved Facts */}
+    <section class="bg-background-100 py-24 md:py-32 px-6 md:px-10">
+      <div class="w-full max-w-5xl mx-auto">
+        <SectionLabel>Factual Record</SectionLabel>
+        <h2 class="mt-5 font-heading text-3xl md:text-4xl text-foreground-950">Verified Information</h2>
+        <p class="mt-4 max-w-2xl text-foreground-600 text-sm md:text-base leading-relaxed">
+          Below is a categorized list of factual claims present on this website, their known sources, and their preservation status.
+        </p>
+
+        <div class="mt-14 space-y-12">
+          {preservedFacts.map((group) => (
+            <div>
+              <h3 class="font-heading text-xl text-foreground-950 mb-5">{group.category}</h3>
+              <ul class="space-y-3">
+                {group.items.map((item) => (
+                  <li class="flex gap-4 items-start">
+                    <span class="w-2 h-2 bg-primary-500 flex-shrink-0 mt-2"></span>
+                    <span class="text-sm text-foreground-700 leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Disclaimer */}
+    <section class="py-16 md:py-24 px-6 md:px-10">
+      <div class="w-full max-w-3xl mx-auto text-center">
+        <div class="bg-background-100 border border-background-200 p-8 md:p-12">
+          <h3 class="font-heading text-xl text-foreground-950">Accuracy &amp; Updates</h3>
+          <p class="mt-4 text-sm text-foreground-600 leading-relaxed">
+            This website was built with the best available information at the time of reconstruction. If any detail — contact info, service descriptions, personnel, or history — has changed or is inaccurate, please reach out and we will update it immediately.
+          </p>
+          <p class="mt-3 text-sm text-foreground-600 leading-relaxed">
+            We believe transparency builds trust, and this page exists to hold ourselves accountable to that standard.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

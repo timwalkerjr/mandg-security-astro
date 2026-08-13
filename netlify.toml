@@ -1,0 +1,6 @@
+# Static Astro build — real pre-rendered HTML per route.
+# publish = "dist" (Astro default), NOT "out". NO SPA catch-all redirect:
+# every route is a real file, so deep links resolve without a fallback.
+[build]
+  command = "npm run build"
+  publish = "dist"

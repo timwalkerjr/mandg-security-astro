@@ -1,0 +1,79 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+import CtaBand from "@/components/CtaBand.astro";
+import { services } from "@/mocks/home";
+import { localBusinessSchema } from "@/lib/seo";
+
+const title = "Security Services | M&G Security — Berks County, PA";
+const description =
+  "M&G Security provides comprehensive security services across Berks County, PA — events, construction sites, apartment complexes, auctions, concerts, and private investigation by law enforcement-trained officers.";
+---
+<BaseLayout title={title} description={description} canonical="/security-services" jsonLd={localBusinessSchema()}>
+  <main>
+    {/* Hero */}
+    <section class="relative bg-secondary-500 pt-[140px] pb-20 px-6 md:px-10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(var(--primary-500)/0.08),_transparent_50%)]"></div>
+      <div class="relative z-10 max-w-4xl">
+        <SectionLabel tone="dark">Our Services</SectionLabel>
+        <h1 class="mt-5 font-heading text-4xl md:text-5xl lg:text-6xl text-foreground-50">
+          Professional Security
+          <br />
+          <span class="text-primary-500">for Every Need</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-foreground-400 text-base leading-relaxed">
+          M&amp;G Security provides comprehensive security services for events, construction sites, corporate properties, and more. Our team of active and retired law enforcement officers brings unmatched professionalism to every assignment.
+        </p>
+      </div>
+    </section>
+
+    {/* Services Grid */}
+    <section class="py-24 md:py-32 px-6 md:px-10">
+      <div class="w-full">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((s) => (
+            <a
+              href={`/security-services/${s.slug}`}
+              class="group relative bg-secondary-500 border border-secondary-500 p-7 overflow-hidden transition-all duration-700 hover:-translate-y-1 hover:bg-background-50 hover:border-primary-300 block"
+            >
+              <div class="relative z-10 transition-colors duration-700">
+                <div class="w-12 h-12 flex items-center justify-center bg-foreground-50/10 text-primary-400 group-hover:bg-primary-100 group-hover:text-primary-500 transition-colors duration-700">
+                  <i class={`${s.icon} text-2xl`}></i>
+                </div>
+                <h3 class="mt-5 font-heading text-lg text-foreground-50 group-hover:text-foreground-950 transition-colors duration-700">
+                  {s.title}
+                </h3>
+                <p class="mt-2 text-sm text-foreground-400 leading-relaxed group-hover:text-foreground-600 transition-colors duration-700">
+                  {s.desc}
+                </p>
+                <span class="mt-4 inline-flex items-center gap-1.5 text-xs font-label uppercase tracking-[0.1em] text-primary-400 group-hover:text-primary-500 transition-colors duration-700">
+                  Learn More
+                  <i class="ri-arrow-right-line"></i>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      heading="Need Security for Your Next Event?"
+      text="Contact us today for a tailored security assessment and quote. Our team is ready to protect your people, property, and peace of mind."
+    >
+      <a
+        href="tel:+14848248631"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-500 text-foreground-950 font-label text-xs uppercase tracking-[0.1em] hover:bg-primary-600 transition-colors whitespace-nowrap cursor-pointer"
+      >
+        <i class="ri-phone-line"></i>
+        Call (484) 824-8631
+      </a>
+      <a
+        href="/contact-us"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-foreground-50/30 text-foreground-50 font-label text-xs uppercase tracking-[0.1em] hover:bg-foreground-50/10 transition-colors whitespace-nowrap cursor-pointer"
+      >
+        Request a Quote
+      </a>
+    </CtaBand>
+  </main>
+</BaseLayout>

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# AI crawlers welcome — content is in the served HTML.
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://mandgsecurity.netlify.app/sitemap-index.xml

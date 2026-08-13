@@ -1,0 +1,102 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+
+const title = "Sitemap | M&G Security";
+const description = "A complete index of every page on the M&G Security website.";
+
+const sitemapGroups = [
+  { title: "Main Pages", links: [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about-us" },
+    { label: "Photo Gallery", href: "/photo-gallery" },
+    { label: "Articles", href: "/articles" },
+    { label: "Contact Us", href: "/contact-us" },
+    { label: "Employment Opportunities", href: "/employment-opportunities" },
+  ]},
+  { title: "Security Services", links: [
+    { label: "All Services", href: "/security-services" },
+    { label: "Apartment Complex Security", href: "/security-services/apartment-complex" },
+    { label: "Public Auctions", href: "/security-services/auctions" },
+    { label: "Concert Security", href: "/security-services/concert-security" },
+    { label: "Construction Sites", href: "/security-services/construction-sites" },
+    { label: "Festivals & Major Events", href: "/security-services/festivals-major-events" },
+    { label: "High School Events", href: "/security-services/high-school-events" },
+    { label: "Private Investigation", href: "/security-services/private-investigation" },
+    { label: "Restaurant Maintenance", href: "/security-services/restaurant-maintenance" },
+    { label: "Sporting Events", href: "/security-services/sporting-events" },
+  ]},
+  { title: "Utility & Reference", links: [
+    { label: "Style Guide", href: "/style-guide" },
+    { label: "About This Site", href: "/about-this-site" },
+    { label: "Sitemap", href: "/sitemap" },
+  ]},
+];
+
+const totalPages = sitemapGroups.reduce((acc, g) => acc + g.links.length, 0);
+const servicePages = sitemapGroups[1].links.length;
+---
+<BaseLayout title={title} description={description} canonical="/sitemap">
+  <main>
+    {/* Hero */}
+    <section class="relative bg-secondary-500 pt-[140px] pb-20 px-6 md:px-10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(var(--primary-500)/0.08),_transparent_50%)]"></div>
+      <div class="relative z-10 max-w-4xl">
+        <SectionLabel tone="dark">Navigation</SectionLabel>
+        <h1 class="mt-5 font-heading text-4xl md:text-5xl lg:text-6xl text-foreground-50">
+          Site <span class="text-primary-500">Map</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-foreground-400 text-base leading-relaxed">
+          A complete index of every page on the M&amp;G Security website. Use this as a quick reference or jumping-off point.
+        </p>
+      </div>
+    </section>
+
+    {/* Sitemap Grid */}
+    <section class="py-24 md:py-32 px-6 md:px-10">
+      <div class="w-full max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {sitemapGroups.map((group) => (
+            <div>
+              <h2 class="font-heading text-lg text-foreground-950 pb-4 border-b border-background-200">{group.title}</h2>
+              <ul class="mt-5 space-y-3">
+                {group.links.map((link) => (
+                  <li>
+                    <a href={link.href} class="text-sm text-foreground-600 hover:text-primary-500 transition-colors cursor-pointer flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 bg-primary-400"></span>
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Stats */}
+    <section class="bg-background-100 py-16 md:py-24 px-6 md:px-10">
+      <div class="w-full max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div class="font-heading text-3xl text-primary-500">{totalPages}</div>
+            <div class="mt-1 font-label text-xs uppercase tracking-[0.2em] text-foreground-500">Total Pages</div>
+          </div>
+          <div>
+            <div class="font-heading text-3xl text-primary-500">{servicePages}</div>
+            <div class="mt-1 font-label text-xs uppercase tracking-[0.2em] text-foreground-500">Service Pages</div>
+          </div>
+          <div>
+            <div class="font-heading text-3xl text-primary-500">1</div>
+            <div class="mt-1 font-label text-xs uppercase tracking-[0.2em] text-foreground-500">Gallery</div>
+          </div>
+          <div>
+            <div class="font-heading text-3xl text-primary-500">3</div>
+            <div class="mt-1 font-label text-xs uppercase tracking-[0.2em] text-foreground-500">Utility Pages</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

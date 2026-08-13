@@ -1,0 +1,129 @@
+---
+// Site footer. The twalkerco credit passes link equity (dofollow) from the
+// home page ONLY; every other page renders it nofollow so the sitewide
+// repetition isn't read as a spammy sitewide backlink.
+const pathname = Astro.url.pathname;
+const isHome = pathname === "/";
+const creditRel = isHome ? "noopener noreferrer" : "nofollow noopener noreferrer";
+
+const quickLinks = [
+  { label: "Home", href: "/" },
+  { label: "Security Services", href: "/security-services" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Photo Gallery", href: "/photo-gallery" },
+  { label: "Articles", href: "/articles" },
+  { label: "Contact Us", href: "/contact-us" },
+  { label: "Employment", href: "/employment-opportunities" },
+];
+
+const serviceLinks = [
+  { label: "Sporting Events", href: "/security-services/sporting-events" },
+  { label: "High School Events", href: "/security-services/high-school-events" },
+  { label: "Construction Sites", href: "/security-services/construction-sites" },
+  { label: "Festivals & Major Events", href: "/security-services/festivals-major-events" },
+  { label: "Concerts", href: "/security-services/concert-security" },
+  { label: "Private Investigation", href: "/security-services/private-investigation" },
+  { label: "Apartment Complex", href: "/security-services/apartment-complex" },
+  { label: "Auctions", href: "/security-services/auctions" },
+  { label: "Restaurant Maintenance", href: "/security-services/restaurant-maintenance" },
+];
+---
+<footer class="bg-secondary-500 text-foreground-50 pt-20 pb-10 px-6 md:px-10">
+  <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-12">
+    {/* Brand */}
+    <div class="lg:col-span-4">
+      <a href="/" class="flex items-center gap-2.5 cursor-pointer">
+        <img
+          src="/images/mg-lockup_gold-head_white-text.webp"
+          alt="M&G Security"
+          width={2554}
+          height={808}
+          class="h-12 w-auto object-contain"
+        />
+      </a>
+      <p class="mt-5 max-w-sm text-sm text-foreground-400 leading-relaxed">
+        Professional security services for Berks County, PA and surrounding areas since 1997. Owned and operated by former law enforcement officers.
+      </p>
+      <div class="mt-7 flex items-center gap-2">
+        <a
+          href="https://www.facebook.com/profile.php?id=100063783338150"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-9 h-9 flex items-center justify-center border border-foreground-700 text-foreground-400 hover:bg-primary-500 hover:border-primary-500 hover:text-foreground-950 transition-colors cursor-pointer"
+          aria-label="Facebook"
+        >
+          <i class="ri-facebook-fill text-sm"></i>
+        </a>
+      </div>
+    </div>
+
+    {/* Quick Links */}
+    <div class="lg:col-span-2">
+      <p class="font-label text-[10px] tracking-[0.1em] uppercase text-foreground-400">Navigation</p>
+      <ul class="mt-5 space-y-3">
+        {quickLinks.map((l) => (
+          <li>
+            <a href={l.href} class="text-sm text-foreground-400 hover:text-primary-500 transition-colors cursor-pointer whitespace-nowrap">
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Services */}
+    <div class="lg:col-span-3">
+      <p class="font-label text-[10px] tracking-[0.1em] uppercase text-foreground-400">Services</p>
+      <ul class="mt-5 space-y-3">
+        {serviceLinks.map((l) => (
+          <li>
+            <a href={l.href} class="text-sm text-foreground-400 hover:text-primary-500 transition-colors cursor-pointer whitespace-nowrap">
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Contact */}
+    <div class="lg:col-span-3">
+      <p class="font-label text-[10px] tracking-[0.1em] uppercase text-foreground-400">Contact</p>
+      <div class="mt-5 space-y-4 text-sm text-foreground-400">
+        <p class="leading-relaxed">
+          P.O. Box 6255<br />
+          Wyomissing, PA 19610
+        </p>
+        <p>
+          <a href="tel:+14848248631" class="hover:text-primary-500 transition-colors cursor-pointer">
+            (484) 824-8631
+          </a>
+        </p>
+        <p>
+          <a href="mailto:info@theiroldurl.com" class="hover:text-primary-500 transition-colors cursor-pointer">
+            info@theiroldurl.com
+          </a>
+          <span class="block text-xs text-foreground-400 mt-0.5">Update before publish</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full mt-16 pt-6 border-t border-foreground-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-foreground-400">
+    <span>&copy; 2026 M&amp;G Security &middot; All rights reserved</span>
+    <div class="flex items-center gap-6">
+      <a href="/style-guide" class="hover:text-primary-500 cursor-pointer whitespace-nowrap">Style Guide</a>
+      <a href="/about-this-site" class="hover:text-primary-500 cursor-pointer whitespace-nowrap">About This Site</a>
+      <a href="/sitemap" class="hover:text-primary-500 cursor-pointer whitespace-nowrap">Sitemap</a>
+      <a
+        href="https://twalkerco.com"
+        target="_blank"
+        rel={creditRel}
+        class="inline-flex items-center gap-1 hover:text-primary-500 transition-colors cursor-pointer whitespace-nowrap"
+      >
+        <span>Web Design &amp; SEO by</span>
+        <span class="font-heading font-bold text-primary-500">W</span>
+        <span>twalkerco</span>
+      </a>
+    </div>
+  </div>
+</footer>

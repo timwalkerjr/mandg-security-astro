@@ -1,0 +1,73 @@
+---
+// Global document shell: head SEO (title / description / canonical / OG /
+// JSON-LD), self-hosted fonts + icons, the Navbar island, and the Footer.
+// Every route passes its own title/description/canonical + optional jsonLd,
+// so the served HTML carries real per-route metadata and structured data.
+import "@fontsource/manrope/400.css";
+import "@fontsource/manrope/700.css";
+import "@fontsource/space-grotesk/700.css";
+import "@/styles/remixicon.css";
+import "@/styles/global.css";
+import Navbar from "@/components/react/Navbar.tsx";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/lib/seo";
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string; // path (e.g. "/about-us"); defaults to current route
+  image?: string; // absolute or root-relative OG image
+  jsonLd?: object | object[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = SITE.description,
+  canonical,
+  image = "/images/mg-lockup_gold-head_white-text.webp",
+  jsonLd,
+  noindex = false,
+} = Astro.props;
+
+const canonicalPath = canonical ?? Astro.url.pathname;
+const canonicalUrl = new URL(canonicalPath, SITE.url).href;
+const ogImage = new URL(image, SITE.url).href;
+const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    {/* Open Graph / Twitter */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body class="min-h-screen bg-background-50">
+    <Navbar client:load pathname={Astro.url.pathname} />
+    <slot />
+    <Footer />
+  </body>
+</html>

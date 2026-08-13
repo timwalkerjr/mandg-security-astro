@@ -1,0 +1,21 @@
+---
+// Dark CTA band used at the foot of most pages. Heading + blurb on the left,
+// action buttons passed in via the default slot.
+interface Props {
+  heading: string;
+  text: string;
+}
+const { heading, text } = Astro.props;
+---
+<section class="relative bg-secondary-500 py-16 md:py-20 px-6 md:px-10 overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,_oklch(var(--primary-500)/0.10),_transparent_60%)]"></div>
+  <div class="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-8">
+    <div class="text-center md:text-left">
+      <h2 class="font-heading text-3xl md:text-4xl text-foreground-50">{heading}</h2>
+      <p class="mt-3 max-w-xl text-foreground-400 text-sm md:text-base leading-relaxed">{text}</p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-3">
+      <slot />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,114 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+import ContactForm from "@/components/react/ContactForm.tsx";
+import { localBusinessSchema } from "@/lib/seo";
+
+const title = "Contact Us | M&G Security — Get a Security Quote, Berks County PA";
+const description =
+  "Contact M&G Security for a free, no-obligation security quote. Call (484) 824-8631 or send a message. 24/7 emergency response across Berks County, PA.";
+---
+<BaseLayout title={title} description={description} canonical="/contact-us" jsonLd={localBusinessSchema()}>
+  <main>
+    {/* Hero */}
+    <section class="relative bg-secondary-500 pt-[140px] pb-20 px-6 md:px-10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(var(--primary-500)/0.08),_transparent_50%)]"></div>
+      <div class="relative z-10 max-w-4xl">
+        <SectionLabel tone="dark">Contact</SectionLabel>
+        <h1 class="mt-5 font-heading text-4xl md:text-5xl lg:text-6xl text-foreground-50">
+          Get Your <span class="text-primary-500">Security Quote</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-foreground-400 text-base leading-relaxed">
+          Contact M&amp;G Security today for a free, no-obligation quote. Our team will assess your security needs and provide a customized solution.
+        </p>
+      </div>
+    </section>
+
+    {/* Contact Grid */}
+    <section class="py-24 md:py-32 px-6 md:px-10">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+        {/* Contact Details */}
+        <div>
+          <h2 class="font-heading text-2xl md:text-3xl text-foreground-950">Contact Information</h2>
+          <div class="mt-8 space-y-6">
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 flex items-center justify-center bg-primary-100 text-primary-500 flex-shrink-0">
+                <i class="ri-phone-line text-lg"></i>
+              </div>
+              <div>
+                <div class="font-label text-xs uppercase tracking-[0.1em] text-foreground-500">Phone</div>
+                <a href="tel:+14848248631" class="text-foreground-950 font-medium hover:text-primary-500 transition-colors cursor-pointer">
+                  (484) 824-8631
+                </a>
+              </div>
+            </div>
+
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 flex items-center justify-center bg-primary-100 text-primary-500 flex-shrink-0">
+                <i class="ri-mail-line text-lg"></i>
+              </div>
+              <div>
+                <div class="font-label text-xs uppercase tracking-[0.1em] text-foreground-500">Email</div>
+                <a href="mailto:info@theiroldurl.com" class="text-foreground-950 font-medium hover:text-primary-500 transition-colors cursor-pointer">
+                  info@theiroldurl.com <span class="text-foreground-400 text-xs">(placeholder — update before publish)</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 flex items-center justify-center bg-primary-100 text-primary-500 flex-shrink-0">
+                <i class="ri-map-pin-line text-lg"></i>
+              </div>
+              <div>
+                <div class="font-label text-xs uppercase tracking-[0.1em] text-foreground-500">Mailing Address</div>
+                <p class="text-foreground-950 font-medium">
+                  P.O. Box 6255<br />
+                  Wyomissing, PA 19610
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 flex items-center justify-center bg-primary-100 text-primary-500 flex-shrink-0">
+                <i class="ri-time-line text-lg"></i>
+              </div>
+              <div>
+                <div class="font-label text-xs uppercase tracking-[0.1em] text-foreground-500">Availability</div>
+                <p class="text-foreground-950 font-medium">24/7 Emergency Response</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Form */}
+        <div class="bg-background-100 border border-background-200 p-8">
+          <h2 class="font-heading text-xl text-foreground-950">Send Us a Message</h2>
+          <p class="mt-2 text-sm text-foreground-600">
+            Fill out the form below and we will get back to you within 24 hours.
+          </p>
+          <ContactForm client:load />
+        </div>
+      </div>
+    </section>
+
+    {/* Hiring CTA */}
+    <section class="relative bg-secondary-500 py-16 md:py-20 px-6 md:px-10 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,_oklch(var(--primary-500)/0.10),_transparent_60%)]"></div>
+      <div class="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="text-center md:text-left">
+          <h2 class="font-heading text-3xl md:text-4xl text-foreground-50">We Are Hiring</h2>
+          <p class="mt-3 max-w-xl text-foreground-400 text-sm md:text-base leading-relaxed">
+            M&amp;G Security is always looking for qualified security guards. Current and retired law enforcement officers encouraged to apply.
+          </p>
+        </div>
+        <a
+          href="/employment-opportunities"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-500 text-foreground-950 font-label text-xs uppercase tracking-[0.1em] hover:bg-primary-600 transition-colors whitespace-nowrap cursor-pointer"
+        >
+          Apply Now
+          <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

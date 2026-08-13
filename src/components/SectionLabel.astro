@@ -1,0 +1,11 @@
+---
+// Small uppercase eyebrow label with a leading rule. `tone` is accepted for
+// parity with the SPA (both tones render the same primary-500 styling).
+interface Props {
+  tone?: "light" | "dark";
+}
+---
+<span class="inline-flex items-center gap-2 font-label text-[10px] uppercase tracking-[0.1em] text-primary-500">
+  <span class="w-6 h-px bg-primary-500"></span>
+  <slot />
+</span>

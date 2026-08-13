@@ -1,0 +1,73 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+import { articleSchema } from "@/lib/seo";
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  heroImage?: string;
+  author?: string;
+  slug: string;
+  jsonLd?: object; // app-supplied Article schema override (twc-publish)
+}
+
+const { title, description, pubDate, updatedDate, heroImage, author, slug, jsonLd } =
+  Astro.props;
+const path = `/articles/${slug}`;
+
+// App-owns-JSON-LD: use the frontmatter override if present, else build it.
+const schema =
+  jsonLd ??
+  articleSchema({ title, description, path, pubDate, updatedDate, author, image: heroImage });
+
+const dateFmt = (d: Date) =>
+  d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+---
+<BaseLayout title={`${title} | M&G Security`} description={description} canonical={path} image={heroImage} jsonLd={schema}>
+  <main>
+    <article>
+      <section class="relative bg-secondary-500 pt-[140px] pb-16 px-6 md:px-10">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(var(--primary-500)/0.08),_transparent_50%)]"></div>
+        <div class="relative z-10 max-w-3xl mx-auto">
+          <SectionLabel tone="dark">Articles</SectionLabel>
+          <h1 class="mt-5 font-heading text-3xl md:text-4xl lg:text-5xl text-foreground-50">{title}</h1>
+          <p class="mt-5 flex items-center gap-3 text-foreground-400 text-sm">
+            <span>{author}</span>
+            <span class="w-1 h-1 bg-primary-500"></span>
+            <time datetime={pubDate.toISOString()}>{dateFmt(pubDate)}</time>
+          </p>
+        </div>
+      </section>
+
+      {heroImage && (
+        <div class="px-6 md:px-10 -mt-8 relative z-10">
+          <img src={heroImage} alt={title} class="w-full max-w-4xl mx-auto aspect-[16/9] object-cover" />
+        </div>
+      )}
+
+      <section class="py-16 md:py-20 px-6 md:px-10">
+        <div class="prose-mg max-w-3xl mx-auto text-foreground-700 leading-relaxed">
+          <slot />
+        </div>
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  /* Minimal prose styling for MDX article bodies. */
+  .prose-mg > * + * { margin-top: 1.25rem; }
+  .prose-mg h2 { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: -0.02em; font-weight: 700; font-size: 1.5rem; line-height: 1.2; margin-top: 2.5rem; color: oklch(var(--foreground-950)); }
+  .prose-mg h3 { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: -0.02em; font-weight: 700; font-size: 1.15rem; margin-top: 2rem; color: oklch(var(--foreground-950)); }
+  .prose-mg p { font-size: 0.975rem; }
+  .prose-mg a { color: oklch(var(--primary-600)); text-decoration: underline; }
+  .prose-mg a:hover { color: oklch(var(--primary-500)); }
+  .prose-mg ul { list-style: disc; padding-left: 1.5rem; }
+  .prose-mg ol { list-style: decimal; padding-left: 1.5rem; }
+  .prose-mg li { margin-top: 0.5rem; font-size: 0.975rem; }
+  .prose-mg strong { color: oklch(var(--foreground-950)); font-weight: 700; }
+  .prose-mg blockquote { border-left: 3px solid oklch(var(--primary-500)); padding-left: 1rem; color: oklch(var(--foreground-600)); }
+</style>

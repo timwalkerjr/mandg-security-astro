@@ -1,0 +1,218 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionLabel from "@/components/SectionLabel.astro";
+
+const title = "Style Guide | M&G Security";
+const description = "The M&G Security brand system — typography, color tokens, voice, and logo usage.";
+
+const typeScale = [
+  { name: "Display / H1", class: "text-4xl md:text-5xl lg:text-6xl", text: "Professional Security" },
+  { name: "H2", class: "text-3xl md:text-4xl", text: "Section Headline" },
+  { name: "H3", class: "text-xl md:text-2xl", text: "Card / Component Title" },
+  { name: "Body", class: "text-sm md:text-base", text: "Manrope is used for body copy. It reads clean at any size with generous letter-spacing and comfortable line height." },
+  { name: "Label / Button", class: "text-[10px] md:text-xs", text: "UPPERCASE TRACKING" },
+];
+
+const colorTokens = [
+  { name: "Primary", token: "primary", desc: "Gold — CTAs, accents, hover states, brand energy", bg: "bg-primary-500", text: "text-foreground-950", border: "" },
+  { name: "Accent", token: "accent", desc: "Muted blue-grey — secondary highlights, subtle contrast", bg: "bg-accent-500", text: "text-foreground-50", border: "" },
+  { name: "Secondary", token: "secondary", desc: "Dark charcoal — footer, dark sections, depth", bg: "bg-secondary-500", text: "text-foreground-50", border: "" },
+  { name: "Background", token: "background", desc: "Near-white — page canvas, card fills, calm base", bg: "bg-background-50", text: "text-foreground-950", border: "border border-background-200" },
+  { name: "Foreground", token: "foreground", desc: "Text scale — body, muted, strong, headings", bg: "bg-foreground-950", text: "text-foreground-50", border: "" },
+];
+
+const voicePrinciples = [
+  { title: "Direct & Professional", body: "No fluff. Say what you do and who you are. The audience is event planners, property managers, and school administrators — they want clarity, not poetry." },
+  { title: "Authority Without Arrogance", body: "Lead with law enforcement experience and 27+ years of service. That credibility speaks for itself. Never oversell or use hype language." },
+  { title: "Local & Accountable", body: "Berks County, PA is home. The tone should feel like a neighbor you trust — reliable, responsive, and personally invested in community safety." },
+  { title: "Action-Oriented", body: "Every section should guide the visitor toward contact: call, request a quote, or apply. Passive language has no place here." },
+];
+
+const primaryScale = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+
+const lockups = [
+  { src: "/images/mg-lockup_gold-head_white-text.webp", alt: "Gold head, white text", wrap: "bg-secondary-500" },
+  { src: "/images/mg-lockup_gold-head_black-text.svg", alt: "Gold head, black text", wrap: "bg-background-50 border border-background-200" },
+  { src: "/images/mg-lockup_gold-head_blue-text.webp", alt: "Gold head, blue text", wrap: "bg-background-50 border border-background-200" },
+  { src: "/images/mg-lockup_blue-head_white-text.webp", alt: "Blue head, white text", wrap: "bg-secondary-500" },
+  { src: "/images/mg-lockup_blue-head_black-text.svg", alt: "Blue head, black text", wrap: "bg-background-50 border border-background-200" },
+  { src: "/images/mg-lockup_blue-head_blue-text.svg", alt: "Blue head, blue text", wrap: "bg-background-50 border border-background-200" },
+  { src: "/images/mg-lockup_white-head_white-text.webp", alt: "White head, white text", wrap: "bg-secondary-500" },
+  { src: "/images/mg-lockup_white-head_blue-text.webp", alt: "White head, blue text", wrap: "bg-background-50 border border-background-200" },
+];
+
+const iconSets = [
+  { label: "Gold", wrap: "bg-background-50 border border-background-200", sizes: "48px · 192px · 512px", imgs: [
+    { src: "/images/mg-icon_gold-48.webp", alt: "Gold icon 48px", pad: "p-3", size: "w-12 h-12" },
+    { src: "/images/mg-icon_gold-192.webp", alt: "Gold icon 192px", pad: "p-4", size: "w-16 h-16" },
+    { src: "/images/mg-icon_gold-512.webp", alt: "Gold icon 512px", pad: "p-5", size: "w-24 h-24" },
+  ]},
+  { label: "White", wrap: "bg-secondary-500", sizes: "180px · 192px · 512px", imgs: [
+    { src: "/images/mg-icon_white-180.webp", alt: "White icon 180px", pad: "p-3", size: "w-12 h-12" },
+    { src: "/images/mg-icon_white-192.webp", alt: "White icon 192px", pad: "p-4", size: "w-16 h-16" },
+    { src: "/images/mg-icon_white-512.webp", alt: "White icon 512px", pad: "p-5", size: "w-24 h-24" },
+  ]},
+  { label: "Blue", wrap: "bg-background-50 border border-background-200", sizes: "180px · 192px · 512px", imgs: [
+    { src: "/images/mg-icon_blue-180.webp", alt: "Blue icon 180px", pad: "p-3", size: "w-12 h-12" },
+    { src: "/images/mg-icon_blue-192.webp", alt: "Blue icon 192px", pad: "p-4", size: "w-16 h-16" },
+    { src: "/images/mg-icon_blue-512.webp", alt: "Blue icon 512px", pad: "p-5", size: "w-24 h-24" },
+  ]},
+];
+---
+<BaseLayout title={title} description={description} canonical="/style-guide" noindex={true}>
+  <main>
+    {/* Hero */}
+    <section class="relative bg-secondary-500 pt-[140px] pb-20 px-6 md:px-10">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(var(--primary-500)/0.08),_transparent_50%)]"></div>
+      <div class="relative z-10 max-w-4xl">
+        <SectionLabel tone="dark">Brand System</SectionLabel>
+        <h1 class="mt-5 font-heading text-4xl md:text-5xl lg:text-6xl text-foreground-50">
+          M&amp;G Security <span class="text-primary-500">Style Guide</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-foreground-400 text-base leading-relaxed">
+          This guide defines how M&amp;G Security looks, speaks, and feels across every screen. Fonts, colors, tone, and layout rules that keep the brand consistent.
+        </p>
+      </div>
+    </section>
+
+    {/* Typography */}
+    <section class="py-24 md:py-32 px-6 md:px-10">
+      <div class="w-full max-w-5xl mx-auto">
+        <SectionLabel>Typography</SectionLabel>
+        <h2 class="mt-5 font-heading text-3xl md:text-4xl text-foreground-950">Fonts &amp; Hierarchy</h2>
+        <p class="mt-4 max-w-2xl text-foreground-600 text-sm md:text-base leading-relaxed">
+          Two font families work together: Space Grotesk for headlines and labels (strong, geometric, confident), Manrope for body copy (clean, modern, readable).
+        </p>
+
+        <div class="mt-14 space-y-10">
+          {typeScale.map((t) => (
+            <div class="flex flex-col md:flex-row md:items-baseline gap-3 md:gap-8 border-b border-background-200 pb-8">
+              <div class="md:w-40 flex-shrink-0">
+                <span class="font-label text-xs uppercase tracking-[0.1em] text-foreground-500">{t.name}</span>
+              </div>
+              <div class={`${t.class} ${t.name.startsWith("Body") || t.name.startsWith("Label") ? "font-body" : "font-heading"} text-foreground-950 leading-relaxed`}>
+                {t.text}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Colors */}
+    <section class="bg-background-100 py-24 md:py-32 px-6 md:px-10">
+      <div class="w-full max-w-5xl mx-auto">
+        <SectionLabel>Color System</SectionLabel>
+        <h2 class="mt-5 font-heading text-3xl md:text-4xl text-foreground-950">Palette Tokens</h2>
+        <p class="mt-4 max-w-2xl text-foreground-600 text-sm md:text-base leading-relaxed">
+          Five color roles keep the palette flexible: Primary for brand energy, Secondary for depth, Accent for contrast moments, Background for the canvas, and Foreground for readable text.
+        </p>
+
+        <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {colorTokens.map((c) => (
+            <div class={`${c.bg} ${c.text} p-7 ${c.border}`}>
+              <div class="font-label text-xs uppercase tracking-[0.1em] opacity-70 mb-2">{c.token}</div>
+              <h3 class="font-heading text-lg">{c.name}</h3>
+              <p class="mt-2 text-sm opacity-80 leading-relaxed">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Scale swatches */}
+        <div class="mt-14">
+          <h3 class="font-heading text-xl text-foreground-950 mb-6">Primary Scale</h3>
+          <div class="grid grid-cols-5 md:grid-cols-10 gap-2">
+            {primaryScale.map((step) => (
+              <div class="text-center">
+                <div class={`aspect-square bg-primary-${step}`}></div>
+                <span class="text-[10px] text-foreground-500 mt-1 block">{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Voice */}
+    <section class="py-24 md:py-32 px-6 md:px-10">
+      <div class="w-full max-w-5xl mx-auto">
+        <SectionLabel>Voice &amp; Tone</SectionLabel>
+        <h2 class="mt-5 font-heading text-3xl md:text-4xl text-foreground-950">How M&amp;G Speaks</h2>
+        <p class="mt-4 max-w-2xl text-foreground-600 text-sm md:text-base leading-relaxed">
+          Every headline, button label, and paragraph should sound like it came from the same person: a calm, experienced professional who has seen it all and knows how to keep people safe.
+        </p>
+
+        <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {voicePrinciples.map((p) => (
+            <div class="bg-background-50 border border-background-200 p-8">
+              <h3 class="font-heading text-lg text-foreground-950">{p.title}</h3>
+              <p class="mt-3 text-sm text-foreground-600 leading-relaxed">{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Logo */}
+    <section class="bg-background-100 py-24 md:py-32 px-6 md:px-10">
+      <div class="w-full max-w-5xl mx-auto">
+        <SectionLabel>Logo</SectionLabel>
+        <h2 class="mt-5 font-heading text-3xl md:text-4xl text-foreground-950">Brand Mark</h2>
+        <p class="mt-4 max-w-2xl text-foreground-600 text-sm md:text-base leading-relaxed">
+          The M&amp;G Security lockup features the bulldog mark alongside bold text. Multiple head and text color combinations are available for use across light, dark, and tinted backgrounds.
+        </p>
+
+        {/* Primary approved uses */}
+        <div class="mt-14 flex flex-col md:flex-row items-center gap-10">
+          <div class="bg-secondary-500 p-10">
+            <img src="/images/mg-lockup_gold-head_white-text.webp" alt="M&G Security logo on dark background" class="h-16 w-auto object-contain" />
+          </div>
+          <div class="bg-background-50 border border-background-200 p-10">
+            <img src="/images/mg-lockup_gold-head_black-text.svg" alt="M&G Security logo on light background" class="h-16 w-auto object-contain" />
+          </div>
+        </div>
+        <div class="mt-8 text-sm text-foreground-500">
+          Primary use: dark background with white text and gold bulldog. Light-background usage should use the black-text variant for legibility.
+        </div>
+
+        {/* Full branding set */}
+        <div class="mt-20">
+          <h3 class="font-heading text-xl text-foreground-950 mb-6">Full Lockup Set</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {lockups.map((l) => (
+              <div class={`${l.wrap} p-6 flex items-center justify-center`}>
+                <img src={l.src} alt={l.alt} class="h-12 w-auto object-contain" />
+              </div>
+            ))}
+          </div>
+          <div class="mt-6 text-sm text-foreground-500">
+            All lockup variants are approved for use. Choose the combination that provides the strongest contrast against the target background.
+          </div>
+        </div>
+
+        {/* Icon Mark */}
+        <div class="mt-20">
+          <h3 class="font-heading text-xl text-foreground-950 mb-6">Icon Mark</h3>
+          <p class="mb-8 max-w-2xl text-foreground-600 text-sm leading-relaxed">
+            The standalone bulldog icon — used where space is tight: favicons, social avatars, app icons, and small UI elements. Never use the icon smaller than 16px to preserve detail.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {iconSets.map((set) => (
+              <div>
+                <h4 class="font-label text-xs uppercase tracking-[0.1em] text-foreground-500 mb-4">{set.label}</h4>
+                <div class="flex flex-wrap items-end gap-5">
+                  {set.imgs.map((im) => (
+                    <div class={`${set.wrap} ${im.pad} flex items-center justify-center`}>
+                      <img src={im.src} alt={im.alt} class={`${im.size} object-contain`} />
+                    </div>
+                  ))}
+                </div>
+                <div class="mt-3 text-xs text-foreground-500">{set.sizes}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
